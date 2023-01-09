@@ -13,7 +13,9 @@ const Movies = () => {
 
   useEffect(() => {
     if (filmName === '') { return setMovies([])}
-    getMovies(filmName).then(r => {setMovies(r.data.results)})
+    getMovies(filmName).then(r => {
+      return setMovies(r.data.results)
+    }).catch(error => {return setMovies([0])})
     }, [filmName])
 
   const updateQueryString = (query) => {
@@ -26,7 +28,7 @@ const Movies = () => {
     return <Container>
       <SearchBox value={filmName} onChange={updateQueryString} />
       <CardWrapper>
-                {movies.map((movie) => {
+        { movies[0] === 0 ? "We don`t have any films for your query" : movies.map((movie) => {
                     return (
                         <li key = {movie.id}>
                         <Link to={`${movie.id}`} state={{from: location}}>
@@ -36,7 +38,7 @@ const Movies = () => {
                         </li>
                     )
                     
-                })}
+                }) }
             </CardWrapper>
     </Container>
 }
