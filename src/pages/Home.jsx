@@ -1,6 +1,6 @@
 import { getTrending } from "MovieAPI";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Container, CardWrapper, FilmName } from "components/Home.styled";
 
@@ -10,8 +10,6 @@ const Home = () => {
     useEffect(() => { 
         getTrending().then(r => {setTrending(r.data.results)})
     }, [])
-
-    const location = useLocation();
     
     return (
         <main>
@@ -20,7 +18,7 @@ const Home = () => {
                 {trending.map((result) => {
                     return (
                         <li key = {result.id}>
-                          <Link to={`movies/${result.id}`} state={{from: location}}>
+                          <Link to={`movies/${result.id}`} state={{from: '/'}}>
                           <img src={`https://www.themoviedb.org/t/p/original${result.poster_path}`} alt='poster' width='200' height='300' />
                           <FilmName>{result.original_title}</FilmName>
                         </Link>

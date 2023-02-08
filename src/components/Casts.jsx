@@ -16,7 +16,7 @@ const Casts = () => {
         <div>
             <List>
                 {casts.map((cast) => {
-                    return <Item key={cast.name}>
+                    return <Item key={cast.id}>
                         <img src={`https://www.themoviedb.org/t/p/original${cast.profile_path}`} alt='portrait' width='57' height='86' />
                         <div>
                             <p>{cast.name}</p>

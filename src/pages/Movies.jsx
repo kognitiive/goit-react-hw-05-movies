@@ -23,7 +23,7 @@ const Movies = () => {
     setSearchParams(nextParams);
   };
 
-  const location = useLocation;
+  const location = useLocation();
 
     return <Container>
       <SearchBox value={filmName} onChange={updateQueryString} />
@@ -38,7 +38,7 @@ const Movies = () => {
                         </li>
                     )
                     
-                }) }
+                })}
             </CardWrapper>
     </Container>
 }
